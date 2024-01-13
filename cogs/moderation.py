@@ -194,7 +194,7 @@ class Moderation(commands.Cog, name="moderation"):
 
         :param context: The hybrid command context.
         :param user: The user that should be warned.
-        :param reason: The reason for the warn. Default is "Not specified".
+        :param reason: The reason for the warning. Default is "Not specified".
         """
         member = context.guild.get_member(user.id) or await context.guild.fetch_member(
             user.id
@@ -287,7 +287,7 @@ class Moderation(commands.Cog, name="moderation"):
         """
         await context.send(
             "Deleting messages..."
-        )  # Bit of a hacky way to make sure the bot responds to the interaction and doens't get a "Unknown Interaction" response
+        )  # A bit of a hacky way to make sure the bot responds to the interaction and doesn't give an "Unknown Interaction" response
         purged_messages = await context.channel.purge(limit=amount + 1)
         embed = discord.Embed(
             description=f"**{context.author}** cleared **{len(purged_messages)-1}** messages!",
@@ -345,6 +345,7 @@ class Moderation(commands.Cog, name="moderation"):
         """
         Archives in a text file the last messages with a chosen limit of messages. This command requires the MESSAGE_CONTENT intent to work properly.
 
+        :param context: the app command context
         :param limit: The limit of messages that should be archived. Default is 10.
         """
         log_file = f"{context.channel.id}.log"
